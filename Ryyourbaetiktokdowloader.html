@@ -1,0 +1,144 @@
+    <!DOCTYPE html>
+    <html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RyyourbaeTIK - TikTok Downloader HD</title>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+        <style>
+            /* Dasar */
+            body { font-family: 'Open Sans', sans-serif; margin: 0; background-color: #1a1d29; color: white; text-align: center; }
+            
+            /* Header / Navbar */
+            .navbar { background-color: #1a1d29; padding: 10px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; }
+            .logo { font-size: 24px; font-weight: bold; display: flex; align-items: center; gap: 10px; color: white; text-decoration: none; }
+            .logo span { background: white; color: black; padding: 2px 5px; border-radius: 3px; font-weight: bold; }
+            .nav-links { display: flex; gap: 20px; font-size: 14px; }
+            .nav-links a { color: #ccc; text-decoration: none; }
+            
+            /* Hero Section dengan Gradasi Ungu-Abu */
+            .hero { background: linear-gradient(to bottom, #6200ea 0%, #1a1d29 100%); padding: 80px 20px; }
+            .hero h1 { font-size: 36px; margin-bottom: 30px; }
+            
+            /* Kotak Input Download */
+            .input-container { position: relative; max-width: 700px; margin: 20px auto; display: flex; background: #2a2e3f; border-radius: 4px; padding: 5px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+            input { flex: 1; background: transparent; border: none; color: white; padding: 15px; font-size: 16px; outline: none; }
+            .tempel-btn { background: #3a3f55; color: #ccc; border: none; padding: 0 15px; cursor: pointer; display: flex; align-items: center; gap: 5px; border-radius: 4px; margin-right: 5px; }
+            .dl-btn { background: #2a22cc; color: white; border: none; padding: 0 30px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+            .dl-btn:hover { background: #3d34ff; }
+            .dl-btn:disabled { background: #444; cursor: not-allowed; }
+
+            /* Status Pesan */
+            #statusMsg { margin-top: 15px; font-size: 14px; }
+
+            /* Fitur-Fitur di Bawah */
+            .features { display: flex; justify-content: center; gap: 40px; padding: 80px 20px; flex-wrap: wrap; background-color: #1a1d29; }
+            .feature-item { max-width: 250px; text-align: center; }
+            .feature-item h3 { font-size: 18px; margin-bottom: 10px; font-weight: bold; color: white; }
+            .feature-item p { font-size: 13px; color: #aaa; line-height: 1.6; }
+
+            /* Bagian Promo Bawah */
+            .promo-section { padding: 60px 20px; background-color: #12141d; }
+            .promo-section h2 { font-size: 28px; font-weight: bold; }
+            .promo-desc { max-width: 800px; margin: 15px auto; color: #aaa; font-size: 14px; line-height: 1.6; }
+            .promo-magenta { color: #ff00ff; margin-top: 35px; font-style: italic; font-weight: bold; }
+            .promo-btn { background: #2a22cc; color: white; padding: 15px 35px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 25px; transition: 0.3s; }
+            .promo-btn:hover { background: #3d34ff; }
+        </style>
+    </head>
+    <body>
+
+        <header class="navbar">
+            <a href="#" class="logo">
+                <span>R</span> RyyourbaeTIK
+            </a>
+            <div class="nav-links">
+                <a href="#">Download story TikTok</a>
+                <a href="#">Download TikTok MP3</a>
+            </div>
+            <button style="background: #6200ea; color: white; border: none; padding: 8px 15px; border-radius: 4px; font-size: 12px; cursor: pointer;">Instal aplikasi</button>
+        </header>
+
+        <div class="hero">
+            <h1>Download video TikTok</h1>
+            <div class="input-container">
+                <input type="text" id="tkUrl" placeholder="Tempel tautan video di sini">
+                <button class="tempel-btn">📋 Tempel</button>
+                <button class="dl-btn" id="btnDl">Download</button>
+            </div>
+            <div id="statusMsg"></div>
+        </div>
+
+        <section class="features">
+            <div class="feature-item">
+                <h3>Akses Tanpa Batas</h3>
+                <p>Nikmati kebebasan untuk download video tiktok no watermark sebanyak yang Anda inginkan, tanpa ada batasan.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Unduh Tanpa Watermark</h3>
+                <p>Simpan video TikTok tanpa watermark dengan mudah dan cepat, pastikan setiap clip bebas dari logo TT.</p>
+            </div>
+            <div class="feature-item">
+                <h3>MP4 dan MP3 Dalam HD</h3>
+                <p>Download tiktok tanpa watermark HD, tersedia dalam MP4 atau konversi langsung ke audio MP3.</p>
+            </div>
+        </section>
+
+        <div class="promo-section">
+            <h2>Unduh Video TikTok online HD</h2>
+            <p class="promo-desc">Di ryyourbaetik.com, kami menawarkan layanan gratis untuk unduh video TikTok tanpa watermark. Dapatkan video dengan resolusi HD dalam format MP4, dan ikuti petunjuk mudah kami untuk menggunakan pengunduh tiktok video.</p>
+            <p class="promo-magenta">Berikut cara melakukannya:</p>
+            <div style="font-size: 30px; margin: 10px 0; color: white;">↓</div>
+            <a href="#" class="promo-btn" id="finalLink">Download video TikTok mp4 dengan gratis!</a>
+        </div>
+
+        <script>
+        const btn = document.getElementById('btnDl');
+            const statusMsg = document.getElementById('statusMsg');
+
+            btn.addEventListener('click', async () => {
+                const url = document.getElementById('tkUrl').value;
+                if (!url) return alert("Linknya kosong, tempel dulu bro!");
+
+                btn.disabled = true;
+                statusMsg.innerText = "⏳ Sedang memproses link...";
+                statusMsg.style.color = "#ffeb3b";
+
+                try {
+                    // Panggil backend server.js kamu di port 3000
+                    const response = await fetch(`http://localhost:3000/download?url=${encodeURIComponent(url)}`);
+                    const data = await response.json();
+
+                    // PERBAIKAN: Harus spesifik panggil .downloadUrl dari dalam object data.download_url
+                    if (data.download_url && data.download_url.downloadUrl) {
+                        statusMsg.innerText = "✅ Berhasil! Mengunduh...";
+                        statusMsg.style.color = "#4caf50";
+                        
+                        // Link download asli dari API (berupa string URL, bukan object)
+                        const finalLink = data.download_url.downloadUrl;
+
+                        // Mengarahkan tombol promo di bawah ke link download asli
+                        document.getElementById('finalLink').href = finalLink;
+
+                        // Otomatis download pakai metode elemen <a> biar aman dan gak nyasar ke 404
+                        const a = document.createElement('a');
+                        a.href = finalLink;
+                        a.download = 'tiktok-video.mp4';
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                    } else {
+                        statusMsg.innerText = "❌ Gagal: " + (data.error || "Link tidak ditemukan di API");
+                        statusMsg.style.color = "#f44336";
+                    }
+                } catch (err) {
+                    console.error(err);
+                    statusMsg.innerText = "❌ Error: Koneksi ke server gagal. Cek terminal!";
+                    statusMsg.style.color = "#f44336";
+                } finally {
+                    btn.disabled = false;
+                }
+            });
+        </script>
+    </body>
+    </html>
